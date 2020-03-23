@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=C++,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+\begin{document}
+	
+	\title{CS-224 Object Oriented Programming and Design Methodologies }
+	\author{Spring 2020}
+	\date{Assignment 4, Feb 23, 2020}
+	\maketitle
+	\section{Guidelines}
+	This is the last assignment in this course. You have to present this assignment's work during the class on 17th March 2020. The due date for submission is \textbf{17th March at 8pm}.
+	
+	\begin{itemize}
+		\item You need to do this assignment in a group of two persons
+		\item Only one member of the gorup will submit the assignment to LMS
+		\item You need to follow the best programming practices as given in the accompanying document and it is also present on LMS. Failure in doing so will have your marks deducted.
+		\item Submit assignment on time; late submissions will not be accepted.
+		\item Some assignments will require you to submit multiple files. Always Zip and send them.
+		\item It is better to submit incomplete assignment than none at all.
+		\item It is better to submit the work that you have done yourself than what you have plagiarized.
+		\item It is strongly advised that you start working on the assignment the day you get it. Assignments WILL take time.
+		\item Every assignment you submit should be a single zipped file containing all the other files. Suppose your group member's name are Sara Khan, id 0022 and Ali Haider, id 033 so the name of the submitted file should be SaraKhan0022\_AliHaider033.zip
+		\item DO NOT send your assignment to your instructor, if you do I will just mark your assignment as ZERO for not following clear instructions.
+		\item You can be called in for Viva for any assignment that you submit
+	\end{itemize}
+	
+	\newpage
+	
+	\section{Game of Pigeons}
+
+	Pigeons at HU fly around the campus all the time. This game is a fiction play with the pigeons. The attached exe file is running sample of intended game, where the following rules can be observed.
+	
+	
+	\begin{itemize}
+		\item Clicking on the upper half of screen produces an adult pigeon.
+		\item Clicking on the lower half of screen produces a nest.
+		\item A pigeon lays egg on random interval, currently 2\% chances are to lay egg on every frame.
+		\item If an egg is dropped inside a nest, it produces a baby pigeon, that starts flying up-rightwards and increases its size.
+		\item If an egg is dropped on the floor, it just vanishes.
+		\item A baby pigeon starts laying egg when its size is same as adult pigeon.
+		\item Pigeons stop flying as they reach to a certain height in the screen.
+		\item A pigeon is died after laying 5 eggs.
+		\item No object is going beyond the boundaries of the screen.
+	\end{itemize}
+	
+	\subsection{Core Task}
+		You have to implement this game by using best OOP approaches. In particular, since \texttt{Pigeon, Egg and Nest} are some objects to be drawn on the screen, so a super class, call it \texttt{Unit}, can be implemented to take care of drawing aspects for all these objects. Following list of items are the core task for this assignment:
+	\begin{itemize}
+		\item A link list should be maintained for every type of objects.
+		\item When certain object is destroyed, remove it from its particular link list.
+		\item Inherit the \texttt{Pigeon, Egg and Nest} classes from \texttt{Unit} class, and use best OOP approaches to providing the functionality.
+		\item Follow all the game rules given above.
+	\end{itemize}
+	
+	\subsection{Open-Ended Task}
+		To make the game interesting and fun, apart from implementing the core tasks, you have to implement at least two other features in the game. You have to design these features yourselves. Some possible (not limited to) pointers are:
+	\begin{itemize}
+		\item When a pigeon reaches the right-most position, it should start flying in left direction.
+		\item As the egg is falling down, it wiggles.
+		\item Eggs take some time to hatch while placed in the nest.
+		\item Play an animation as a pigeon ends its life.
+		\item Play a breaking egg animation when an egg hatches.
+		\item If an egg hits a pigeon, it decreases the pigeon's life.
+		\item Game can be paused and resumed.
+	\end{itemize}		
+		 
+	\subsection{Bonus Task (Optional)}
+		If you are really having fun doing this assignment, you can do some extra to earn bonus points. This task will give you absolute 2 marks as bonus. In the upcoming lectures, we'll be studying Polymorphism and Operator-Overloading. If you implement the both in this assignment, you can earn the bonus marks. However, it's up-to you to decide where to implement Polymorphism and Operator-Overloading.
+	\section{Some Useful Pointers}
+	
+	\begin{itemize}
+		\item Sample code is there for your benefit. If you are going to use it, understand how it works. 
+		\item You do not need to follow the code given exactly. You can make changes where you see fit provided that it makes sense.	\item A general rule of thumb is that all attributes in a class are private/protected.
+		\item Where necessary, declare your own functions inside classes. Make sure why you would keep a function as private or public.	
+		\item You need to define separate \path{*.hpp} and \path{*.cpp} files for all the classes.
+		\item Lazy Foo tutorial are helpful to learn working in SDL \url{https://lazyfoo.net/tutorials/SDL/index.php}. 
+		\item You should take \url{www.cplusplus.com} and \url{www.cppreference.com} as primary web source to search about C++.
+		\item If you want, you can use pre-built link list in C++. \url{https://en.cppreference.com/w/cpp/container/list}
+	\end{itemize}
+	
+\end{document}
