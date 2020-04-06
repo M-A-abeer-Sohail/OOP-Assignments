@@ -1,8 +1,8 @@
 #include "pigeon.hpp"
 
-void Pigeon::draw(SDL_Renderer *renderer)
+void Pigeon::draw(SDL_Renderer *render)
 {
-    SDL_RenderCopy(renderer, assets, &src[frame], &mover);
+    SDL_RenderCopy(render, assets, &src[frame], &mover);
     frame++;
     if (frame == 3)
         frame = 0;
@@ -23,3 +23,11 @@ Pigeon::Pigeon()
     src[2] = {0, 266, 160, 133};
     assets = NULL;
 }
+
+// void Pigeon::setTexture(SDL_Renderer *tex)
+// {
+//     SDL_RenderCopy(tex, assets, &src[frame], &mover);
+//     frame++;
+//     if (frame == 3)
+//         frame = 0;
+// }

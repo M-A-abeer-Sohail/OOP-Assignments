@@ -4,11 +4,11 @@
 Unit::Unit()
 {
 }
-Unit::void draw(SDL_Renderer *tex)
+void Unit::draw(SDL_Renderer *tex)
 {
-    SDL_RenderCopy(tex, &assets, &src, &mover);
+    SDL_RenderCopy(tex, assets, &src, &mover);
 }
-Unit::SDL_Rect getMover(int xCoord, int yCoord, int width, int height)
+void Unit::setMover(int xCoord, int yCoord, int width, int height)
 {
     mover.x = xCoord;
     mover.y = yCoord;
