@@ -1,4 +1,6 @@
 #include "SDL.h"
+#include <iostream>
+
 #pragma once
 class Unit
 {

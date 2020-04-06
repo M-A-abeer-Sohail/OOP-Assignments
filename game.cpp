@@ -143,6 +143,8 @@ void Game::run()
 	SDL_Event e;
 	//While application is running
 	// Pigeon p1(assets);
+	// Nest n1(assets);
+	// Egg e1(assets);
 	while (!quit)
 	{
 		//Handle events on queue
@@ -159,14 +161,17 @@ void Game::run()
 				//this is a good location to add pigeon in linked list.
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse, &yMouse);
-
+				// Dimensions for pigeon are 50,50
+				// Dimensions for nest are 60,75
+				// Dimensions for egg are 27,29
 				if (yMouse < 300)
 				{
 					// Create a new Pigeon
-					p1.setMover(xMouse, yMouse, 50, 50);
+					// p1.setMover(xMouse, yMouse, 50, 50);
 				}
 				else
 				{
+					// e1.setMover(xMouse, yMouse, 27, 29);
 					// Create a new Nest
 				}
 			}
@@ -175,6 +180,7 @@ void Game::run()
 		SDL_RenderClear(gRenderer);						 //removes everything from renderer
 		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
 		// p1.draw(gRenderer);
+		e1.draw(gRenderer);
 		// // updatePigeons();
 		// // updateEggs();
 		// drawAllObjects(); //draws all objects

@@ -18,4 +18,5 @@ void Unit::setMover(int xCoord, int yCoord, int width, int height)
 Unit::~Unit()
 {
     SDL_DestroyTexture(assets);
+    std::cout << "In destructor" << std::endl;
 }
