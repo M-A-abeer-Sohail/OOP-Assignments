@@ -22,3 +22,4 @@ Pigeon::Pigeon()
     src[1] = {0, 133, 160, 133};
     src[2] = {0, 266, 160, 133};
     assets = NULL;
+}

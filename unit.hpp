@@ -9,7 +9,9 @@ protected:
 
 public:
     Unit();
-    Unit(SDL_Texture *);
+    // Unit(SDL_Texture *);
     void draw(SDL_Renderer *);
-    SDL_Rect getMover();
+    SDL_Rect getMover(int x, int y, int width, int height);
+
+    ~Unit();
 };
