@@ -142,7 +142,7 @@ void Game::run()
 	//Event handler
 	SDL_Event e;
 	//While application is running
-	Pigeon p1(gTexture);
+	// Pigeon p1(assets);
 	while (!quit)
 	{
 		//Handle events on queue
@@ -174,7 +174,7 @@ void Game::run()
 
 		SDL_RenderClear(gRenderer);						 //removes everything from renderer
 		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
-		p1.draw(gRenderer);
+		// p1.draw(gRenderer);
 		// // updatePigeons();
 		// // updateEggs();
 		// drawAllObjects(); //draws all objects
