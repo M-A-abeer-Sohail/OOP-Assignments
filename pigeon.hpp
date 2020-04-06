@@ -15,5 +15,5 @@ public:
     void draw(SDL_Renderer *);
     bool layEgg();
     bool isAlive();
-    void setTexture(SDL_Renderer *);
+    //void setTexture(SDL_Renderer *);
 };

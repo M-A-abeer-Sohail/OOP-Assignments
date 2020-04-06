@@ -179,8 +179,8 @@ void Game::run()
 		// drawAllObjects(); //draws all objects
 
 		SDL_RenderPresent(gRenderer); //displays the updated renderer
-		p1.draw(gRenderer);
-		SDL_RenderPresent(gRenderer);
+		//p1.draw(gRenderer);
+		//SDL_RenderPresent(gRenderer);
 		SDL_Delay(200); //causes sdl engine to delay for specified miliseconds
 	}
 }
