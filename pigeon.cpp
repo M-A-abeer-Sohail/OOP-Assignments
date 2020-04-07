@@ -3,7 +3,7 @@
 void Pigeon::draw(SDL_Renderer *testRenderer, bool pause)
 {
     SDL_RenderCopy(testRenderer, assets, &src[frame], &mover);
-    if (!pause) // If game is paused frame will not be incremented
+    if (!pause) // If game is paused frame will increment
     {
         frame++;
     }
