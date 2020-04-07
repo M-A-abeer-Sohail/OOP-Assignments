@@ -285,6 +285,7 @@ void Game::run()
 		{
 			SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
 			p1.draw(gRenderer, pause);
+			// here would come drawAllObjects with input of pause.						 //
 		}
 		else
 		{
