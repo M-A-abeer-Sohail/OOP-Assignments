@@ -42,6 +42,7 @@ public:
     bool loadMedia();
     void close();
     SDL_Texture *loadTexture(std::string path);
+    bool titleScreen();
     void run();
     void updateEggs();
     void updatePigeons();

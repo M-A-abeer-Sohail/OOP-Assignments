@@ -61,7 +61,7 @@ bool Game::loadMedia()
 	bool success = true;
 
 	assets = loadTexture("assets.png");
-	gTexture = loadTexture("hu.png");
+	gTexture = loadTexture("title.png");
 	if (assets == NULL || gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());
@@ -71,8 +71,23 @@ bool Game::loadMedia()
 	return success;
 }
 
+bool Game::titleScreen()
+{
+
+	SDL_Rect hu;
+	hu.x = SCREEN_WIDTH / 4;
+	hu.y = SCREEN_HEIGHT / 4;
+	hu.w = 200;
+	hu.h = 200;
+	SDL_RenderSetViewport(gRenderer, &hu);
+
+	//Render texture to screen
+	SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+}
+
 void Game::close()
 {
+	// cout << "hello" << endl;
 	//Free loaded images
 	SDL_DestroyTexture(assets);
 	assets = NULL;
@@ -179,8 +194,9 @@ void Game::run()
 
 		SDL_RenderClear(gRenderer);						 //removes everything from renderer
 		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
+		titleScreen();
 		// p1.draw(gRenderer);
-		e1.draw(gRenderer);
+		// e1.draw(gRenderer);
 		// // updatePigeons();
 		// // updateEggs();
 		// drawAllObjects(); //draws all objects

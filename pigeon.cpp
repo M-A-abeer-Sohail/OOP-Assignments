@@ -1,19 +1,19 @@
 #include "pigeon.hpp"
 
-void Pigeon::draw(SDL_Renderer *render)
+void Pigeon::draw(SDL_Renderer *testRenderer)
 {
-    SDL_RenderCopy(render, assets, &src[frame], &mover);
+    SDL_RenderCopy(testRenderer, assets, &src[frame], &mover);
     frame++;
     if (frame == 3)
         frame = 0;
 }
 
-Pigeon::Pigeon(SDL_Texture *tex)
+Pigeon::Pigeon(SDL_Texture *testTexture)
 {
     src[0] = {0, 0, 160, 133};
     src[1] = {0, 133, 160, 133};
     src[2] = {0, 266, 160, 133};
-    assets = tex;
+    assets = testTexture;
 }
 
 Pigeon::Pigeon()

@@ -4,9 +4,9 @@
 Unit::Unit()
 {
 }
-void Unit::draw(SDL_Renderer *tex)
+void Unit::draw(SDL_Renderer *testRenderer)
 {
-    SDL_RenderCopy(tex, assets, &src, &mover);
+    SDL_RenderCopy(testRenderer, assets, &src, &mover);
 }
 void Unit::setMover(int xCoord, int yCoord, int width, int height)
 {
