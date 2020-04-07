@@ -31,6 +31,8 @@ class Game
     //global reference to png image sheets
     SDL_Texture *assets = NULL;
 
+    SDL_Texture *viewportTextures[2] = {NULL, NULL};
+
     //You may use C++ linked lists, or you can create your own.
 
     // list<Pigeon*> pigeons;

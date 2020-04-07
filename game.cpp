@@ -58,31 +58,63 @@ bool Game::loadMedia()
 
 {
 	//Loading success flag
-	bool success = true;
+	bool successOut = true;
+	bool success1 = titleScreen();
 
 	assets = loadTexture("assets.png");
+	// gTexture = loadTexture("title.png");
+	if (assets == NULL || !success1)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		successOut = false;
+	}
+
+	return successOut;
+}
+
+bool Game::titleScreen()
+{
+
+	bool success = true;
 	gTexture = loadTexture("title.png");
-	if (assets == NULL || gTexture == NULL)
+
+	SDL_Rect title;
+	title.x = 0;
+	title.y = 0;
+	title.w = 800;
+	title.h = 150;
+	SDL_RenderSetViewport(gRenderer, &title);
+	SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+
+	SDL_DestroyTexture(gTexture);
+	gTexture = loadTexture("hu.png");
+
+	SDL_Rect hu;
+	hu.x = SCREEN_WIDTH / 8;
+	hu.y = SCREEN_HEIGHT / 4;
+	hu.w = 200;
+	hu.h = 200;
+	SDL_RenderSetViewport(gRenderer, &hu);
+	SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+
+	SDL_DestroyTexture(gTexture);
+	gTexture = loadTexture("ned.png");
+
+	SDL_Rect ned;
+	ned.x = (7 * SCREEN_WIDTH / 8) - 200;
+	ned.y = SCREEN_HEIGHT / 4;
+	ned.w = 200;
+	ned.h = 200;
+	SDL_RenderSetViewport(gRenderer, &ned);
+	SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+
+	if (gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());
 		success = false;
 	}
 
 	return success;
-}
-
-bool Game::titleScreen()
-{
-
-	SDL_Rect hu;
-	hu.x = SCREEN_WIDTH / 4;
-	hu.y = SCREEN_HEIGHT / 4;
-	hu.w = 200;
-	hu.h = 200;
-	SDL_RenderSetViewport(gRenderer, &hu);
-
-	//Render texture to screen
-	SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
 }
 
 void Game::close()
@@ -92,6 +124,8 @@ void Game::close()
 	SDL_DestroyTexture(assets);
 	assets = NULL;
 	SDL_DestroyTexture(gTexture);
+	// SDL_DestroyTexture(viewportTextures[0]);
+	// viewportTextures[0] = NULL;
 
 	//Destroy window
 	SDL_DestroyRenderer(gRenderer);
@@ -160,6 +194,10 @@ void Game::run()
 	// Pigeon p1(assets);
 	// Nest n1(assets);
 	// Egg e1(assets);
+	Pigeon p1(assets);
+	bool inTitleScreen = true;
+	int bgIndex = 0;
+	bool pause = false;
 	while (!quit)
 	{
 		//Handle events on queue
@@ -179,22 +217,80 @@ void Game::run()
 				// Dimensions for pigeon are 50,50
 				// Dimensions for nest are 60,75
 				// Dimensions for egg are 27,29
-				if (yMouse < 300)
+				if (!inTitleScreen && !pause) // only update the pigeon position if game is not paused
 				{
-					// Create a new Pigeon
-					// p1.setMover(xMouse, yMouse, 50, 50);
+					if (yMouse < 300)
+					{
+						// Create a new Pigeon
+						// Enable check to limit cursor to SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50
+						p1.setMover(xMouse, yMouse, 50, 50);
+					}
+					else
+					{
+						// e1.setMover(xMouse, yMouse, 27, 29);
+						// Create a new Nest
+					}
 				}
 				else
 				{
-					// e1.setMover(xMouse, yMouse, 27, 29);
-					// Create a new Nest
+					if (yMouse > (SCREEN_HEIGHT / 4) && yMouse < ((SCREEN_HEIGHT / 4) + 200))
+					{
+						if (xMouse > ((SCREEN_WIDTH / 8)) && xMouse < ((SCREEN_WIDTH / 8) + 200))
+						{
+							bgIndex = 0;
+							SDL_DestroyTexture(gTexture);
+							gTexture = loadTexture("hu.png");
+							inTitleScreen = false;
+							SDL_Rect mainViewport;
+							mainViewport.x = 0;
+							mainViewport.y = 0;
+							mainViewport.w = 800;
+							mainViewport.h = 600;
+							SDL_RenderSetViewport(gRenderer, &mainViewport);
+							SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+						}
+						else if (xMouse > ((7 * SCREEN_WIDTH / 8) - 200) && xMouse < ((7 * SCREEN_WIDTH / 8)))
+						{
+							bgIndex = 1;
+							inTitleScreen = false;
+							SDL_DestroyTexture(gTexture);
+							gTexture = loadTexture("ned.png");
+							SDL_Rect mainViewport;
+							mainViewport.x = 0;
+							mainViewport.y = 0;
+							mainViewport.w = 800;
+							mainViewport.h = 600;
+							SDL_RenderSetViewport(gRenderer, &mainViewport);
+							SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
+						}
+					}
+				}
+			}
+			else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE) // Using space key to pause
+			{
+				if (pause == true)
+				{
+					pause = false;
+				}
+				else if (pause == false)
+				{
+					pause = true;
 				}
 			}
 		}
 
-		SDL_RenderClear(gRenderer);						 //removes everything from renderer
-		SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
-		titleScreen();
+		SDL_RenderClear(gRenderer); //removes everything from renderer
+
+		if (!inTitleScreen)
+		{
+			SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
+			p1.draw(gRenderer, pause);
+		}
+		else
+		{
+			titleScreen();
+		}
+
 		// p1.draw(gRenderer);
 		// e1.draw(gRenderer);
 		// // updatePigeons();

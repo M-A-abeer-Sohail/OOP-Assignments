@@ -12,7 +12,7 @@ public:
     Pigeon(SDL_Texture *);
     // Pigeon(SDL_Texture *, SDL_Rect);
     // Pigeon(SDL_Texture *, SDL_Rect, bool);
-    void draw(SDL_Renderer *);
+    void draw(SDL_Renderer *, bool);
     bool layEgg();
     bool isAlive();
     //void setTexture(SDL_Renderer *);
