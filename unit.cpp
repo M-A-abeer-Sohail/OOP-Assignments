@@ -4,7 +4,7 @@
 Unit::Unit()
 {
 }
-Unit(bool empty) : emptyBit(true){};
+Unit::Unit(bool empty) : emptyBit(true){};
 
 void Unit::draw(SDL_Renderer *testRenderer)
 {
@@ -16,6 +16,16 @@ void Unit::setMover(int xCoord, int yCoord, int width, int height)
     mover.y = yCoord;
     mover.w = width;
     mover.h = height;
+}
+int *Unit::getMover()
+{
+    int *result = new int[4];
+    result[0] = mover.x;
+    result[1] = mover.y;
+    result[2] = mover.w;
+    result[3] = mover.h;
+
+    return result;
 }
 Unit::~Unit()
 {

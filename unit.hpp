@@ -9,6 +9,7 @@ protected:
     SDL_Rect src;
     SDL_Rect mover;
     void setMover(int x, int y, int width, int height);
+    int *getMover();
     bool emptyBit;
 
 public:
@@ -17,5 +18,5 @@ public:
     // Unit(SDL_Texture *);
     virtual void draw(SDL_Renderer *);
 
-    ~Unit();
+    virtual ~Unit();
 };
