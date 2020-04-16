@@ -46,7 +46,8 @@ public:
     SDL_Texture *loadTexture(std::string path);
     bool titleScreen();
     void run();
-    void updateEggs();
-    void updatePigeons();
-    void drawAllObjects();
+    // void updateEggs();
+    // void updatePigeons();
+    void drawAllObjs();
+    void updateObjs();
 };

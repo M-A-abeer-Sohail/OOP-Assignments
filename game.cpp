@@ -165,19 +165,19 @@ SDL_Texture *Game::loadTexture(std::string path)
 	return newTexture;
 }
 
-void Game::updateEggs()
-{
-	//check the collision of eggs and nests here
-	//If an egg is dropped in a nest, produce a new baby pigeon
-	//if the egg is dropped on floor, remove it from list.
-}
-void Game::updatePigeons()
+// void Game::updateEggs()
+// {
+// 	//check the collision of eggs and nests here
+// 	//If an egg is dropped in a nest, produce a new baby pigeon
+// 	//if the egg is dropped on floor, remove it from list.
+// }
+void Game::updateObjs()
 {
 	//Iterate over the link list of pigeons and generated eggs with 2% probability
 	//Remove such pigeons from the list which have laid 4 eggs.
 }
 
-void Game::drawAllObjects()
+void Game::drawAllObjs()
 {
 	//draw the objects here
 }
@@ -194,7 +194,7 @@ void Game::run()
 	// Pigeon p1(assets);
 	// Nest n1(assets);
 	// Egg e1(assets);
-	Pigeon p1(assets);
+	// Pigeon p1(assets);
 	bool inTitleScreen = true;
 	int bgIndex = 0;
 	bool pause = false;
@@ -223,7 +223,7 @@ void Game::run()
 					{
 						// Create a new Pigeon
 						// Enable check to limit cursor to SCREEN_WIDTH - 50, SCREEN_HEIGHT - 50
-						p1.setMover(xMouse, yMouse, 50, 50);
+						// p1.setMover(xMouse, yMouse, 50, 50);
 					}
 					else
 					{
@@ -284,8 +284,8 @@ void Game::run()
 		if (!inTitleScreen)
 		{
 			SDL_RenderCopy(gRenderer, gTexture, NULL, NULL); //Draws background to renderer
-			p1.draw(gRenderer, pause);
-			// here would come drawAllObjects with input of pause.						 //
+															 // p1.draw(gRenderer, pause);
+															 // here would come drawAllObjects with input of pause.						 //
 		}
 		else
 		{

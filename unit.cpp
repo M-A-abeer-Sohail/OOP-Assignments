@@ -4,6 +4,8 @@
 Unit::Unit()
 {
 }
+Unit(bool empty) : emptyBit(true){};
+
 void Unit::draw(SDL_Renderer *testRenderer)
 {
     SDL_RenderCopy(testRenderer, assets, &src, &mover);
