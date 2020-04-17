@@ -48,8 +48,25 @@ void Pigeon::updateBehavior(const int WINDOW_WIDTH, const int WINDOW_HEIGHT)
         }
         if (pos[0] == WINDOW_WIDTH)
         {
-            if (pos[1] == WINDOW_WIDTH)
+            if (pos[1] == WINDOW_HEIGHT)
             {
+                setMover(WINDOW_WIDTH, WINDOW_HEIGHT, mover.w + maxHeight / 20, mover.h / 20)
+            }
+            else
+            {
+                setMover(WINDOW_WIDTH, mover.y + (maxHeight / 20), mover.w + (maxHeight / 20), mover.h + (maxHeight / 20))
+            }
+        }
+        else
+        {
+            if (pos[1] == WINDOW_HEIGHT)
+            {
+                setMover(mover.x + (maxHeight / 20), WINDOW_HEIGHT, mover.w + maxHeight / 20, mover.h / 20)
+            }
+            else
+            {
+                setMover(mover.x + (maxHeight / 20), mover.y + (maxHeight / 20),
+                         mover.w + (maxHeight / 20), mover.h + (maxHeight / 20))
             }
         }
     }
