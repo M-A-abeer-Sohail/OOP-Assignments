@@ -10,6 +10,7 @@ protected:
     SDL_Rect mover;
     bool emptyBit;
     void setMover(int x, int y, int width, int height);
+    void setMover(int, int);
     int *getMover();
 
 public:
@@ -18,7 +19,7 @@ public:
     // Unit(SDL_Texture *);
     virtual void draw(SDL_Renderer *);
     // virtual bool isAdult() = 0;
-    virtual void updateBehavior();
+    virtual void updateBehavior(const int, const int); // Takes in the window dimensions
 
     virtual ~Unit();
 };

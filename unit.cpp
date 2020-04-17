@@ -17,6 +17,11 @@ void Unit::setMover(int xCoord, int yCoord, int width, int height)
     mover.w = width;
     mover.h = height;
 }
+void Unit::setMover(int xCoord, int yCoord)
+{
+    mover.x = xCoord;
+    mover.y = yCoord;
+}
 int *Unit::getMover()
 {
     int *result = new int[4];
@@ -27,7 +32,7 @@ int *Unit::getMover()
 
     return result;
 }
-void Unit::updateBehavior() {}
+void Unit::updateBehavior(const int &WINDOW_WIDTH, const int &WINDOW_HEIGHT) {}
 
 Unit::~Unit()
 {
