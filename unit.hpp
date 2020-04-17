@@ -18,6 +18,7 @@ public:
     // Unit(SDL_Texture *);
     virtual void draw(SDL_Renderer *);
     // virtual bool isAdult() = 0;
+    virtual void updateBehavior();
 
     virtual ~Unit();
 };

@@ -27,6 +27,8 @@ int *Unit::getMover()
 
     return result;
 }
+void Unit::updateBehavior() {}
+
 Unit::~Unit()
 {
     SDL_DestroyTexture(assets);
