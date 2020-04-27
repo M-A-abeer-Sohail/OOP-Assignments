@@ -244,8 +244,8 @@ void Game::run()
 							SDL_Rect mainViewport;
 							mainViewport.x = 0;
 							mainViewport.y = 0;
-							mainViewport.w = 800;
-							mainViewport.h = 600;
+							mainViewport.w = SCREEN_WIDTH;
+							mainViewport.h = SCREEN_HEIGHT;
 							SDL_RenderSetViewport(gRenderer, &mainViewport);
 							SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
 						}
@@ -258,8 +258,8 @@ void Game::run()
 							SDL_Rect mainViewport;
 							mainViewport.x = 0;
 							mainViewport.y = 0;
-							mainViewport.w = 800;
-							mainViewport.h = 600;
+							mainViewport.w = SCREEN_WIDTH;
+							mainViewport.h = SCREEN_HEIGHT;
 							SDL_RenderSetViewport(gRenderer, &mainViewport);
 							SDL_RenderCopy(gRenderer, gTexture, NULL, NULL);
 						}

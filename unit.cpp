@@ -1,10 +1,12 @@
 #include "unit.hpp"
 // #include <SDL.h>
 
-Unit::Unit()
+Unit::Unit(){}
+Unit::Unit(bool empty) : emptyBit(true){}
+Unit::Unit(const int &xCoord, const int &yCoord, const int &width, const int &height)
 {
+    setMover(xCoord, yCoord, width, height);
 }
-Unit::Unit(bool empty) : emptyBit(true){};
 
 void Unit::draw(SDL_Renderer *testRenderer)
 {
